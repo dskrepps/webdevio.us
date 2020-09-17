@@ -69,13 +69,14 @@ const ContactForm = ({heading, email})=>{
 	`;
 	
 	return (
-		<form netlify name="contact-form" method="post"
+		<form data-netlify={true} netlify-honeypot="bot-field" name="contact-form" method="post"
 			className="m-auto max-w-3xl flex flex-col text-lg"
 			onSubmit={handleSubmit(onSubmit)}
 			onChange={()=>setFormSent(false)}
 		>
 			
 			{/* Name the form for netlify */}
+			<input type="hidden" name="bot-field" ref={register()}/>
 			<input type="hidden" name="form-name" value="contact-form" ref={register()}/>
 			
 			{/* Heading and our email passed by props */}
