@@ -19,6 +19,7 @@ const IconTabs = ({contentBgColor='gray-300', innerClassNames='', children, ...m
 	const [selectedIcon, selectIcon] = React.useState(children[0].props.icon);
 	const handleIconClick = e => {
 		e.preventDefault();
+		e.target.blur();
 		selectIcon(e.target.dataset.icon);
 	}
 	
@@ -38,9 +39,9 @@ const IconTabs = ({contentBgColor='gray-300', innerClassNames='', children, ...m
 	return (
 		<div {...moreProps}>
 			<ul className={innerClassNames}>
-				{children.map( ({props: {icon, children}}) => (
+				{children.map( ({props: {icon}}) => (
 					<li key={icon} className='relative inline-block'>
-						<IconLink icon={icon} dhref="#" iconSize={iconSize}
+						<IconLink icon={icon} href={selectedChildHasDesc && icon} iconSize={iconSize}
 							isSelected={selectedChildHasDesc && icon === selectedIcon}
 							className={selectedChildHasDesc && '-mb-2'}
 							onClick={handleIconClick}
