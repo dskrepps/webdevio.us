@@ -2,14 +2,6 @@
 @tailwind base;
 @tailwind components;
 /*! purgecss end ignore */
-
-html { scroll-behavior: smooth; }
-
-:focus {
-	@apply shadow-focus;
-	outline: 0;
-}
-
 @tailwind utilities;
 
 
@@ -22,5 +14,17 @@ html { scroll-behavior: smooth; }
 		.filter-none {
 			filter: none;
 		}
+	}
+}
+
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	:focus {
+		@apply shadow-focus;
+		outline: 0;
 	}
 }

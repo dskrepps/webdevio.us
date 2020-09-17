@@ -48,6 +48,7 @@ module.exports = {
         'inner': 'inset 0 0 4px 0 rgba(0, 0, 0, 0.09)',
         'focus': `0 0 0 4px ${theme('colors.blue.400')}`,
         'error': `0 0 0 4px ${theme('colors.red.500')}`,
+        'never': 'none !important',
       }),
       zIndex: {
         'behind': '-1',

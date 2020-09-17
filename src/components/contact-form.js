@@ -190,7 +190,7 @@ ContactForm.propTypes = {
 const RadioCard = ({children, ...moreProps}) => (
 	<div className="inline-block w-full sm:w-1/2 sm:odd:pr-4 mb-4">
 		<label className="cursor-pointer">
-			<input type="radio" name="subject" {...moreProps} className="appearance-none absolute shadow-none"/>
+			<input type="radio" name="subject" {...moreProps} className="appearance-none absolute shadow-never"/>
 
 			<div className={`${scope.radioCard} h-full   py-2 px-4   flex
 				rounded bg-gray-200 border-2 border-gray-200
