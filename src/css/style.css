@@ -1,0 +1,26 @@
+/*! purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/*! purgecss end ignore */
+
+html { scroll-behavior: smooth; }
+
+:focus {
+	@apply shadow-focus;
+	outline: 0;
+}
+
+@tailwind utilities;
+
+
+/* Currently used by icon-link.js: */
+@layer utilities {
+	.filter-colorless {
+		filter: opacity(60%) brightness(0);
+	}
+	@variants hover, focus {
+		.filter-none {
+			filter: none;
+		}
+	}
+}
