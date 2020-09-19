@@ -34,7 +34,7 @@ const CategoryTree = ({children}) => {
 	const skillLists = categories.map( ({props: {children, ...moreProps}}, i) => {
 		const ref = React.useRef(null);
 		pairedNodes[i].to = ref.current;
-		return <div key={i} ref={ref} className="mx-auto" {...moreProps}> {children} </div>;
+		return <div key={i} ref={ref} className="mx-auto"> {children} </div>;
 	} );
 	
 	const entries = children.filter( child => child.type?.displayName !== 'Category' )
@@ -120,7 +120,7 @@ const Category = React.forwardRef( ({name, backgrounds: bgs, children, ...morePr
 				backgroundPosition: bgs.map( ({x, y})=>`${x} ${y}` ).join(','),
 				backgroundSize: bgs.map( ({scale})=>scale ).join(','),
 				backgroundImage: bgs.map( ({url})=>`url('${importImage(url)}')` ).join(','),
-			}}
+			}} 
 			{...moreProps}
 		>
 			<h3 className="text-center text-xl font-bold tracking-wide">
@@ -139,7 +139,7 @@ Category.displayName = 'Category';
 
 Category.propTypes = {
 	name: PropTypes.string.isRequired,
-	backgrounds: PropTypes.object.isRequired,
+	backgrounds: PropTypes.array.isRequired,
 	children: PropTypes.node.isRequired,
 };
 
@@ -150,7 +150,7 @@ Category.propTypes = {
 const CategoryEntry = ({children}) => (<> {children} </>);
 
 CategoryEntry.propTypes = {
-	category: PropTypes.string.isRequired,
+	categories: PropTypes.string.isRequired,
 	children: PropTypes.node,
 };
 

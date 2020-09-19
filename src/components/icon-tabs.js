@@ -16,7 +16,7 @@ const iconSize = '1.75rem';
 
 const IconTabs = ({contentBgColor='gray-300', innerClassNames='', children, ...moreProps}) => {
 	
-	const [selectedIcon, selectIcon] = React.useState(children[0].props.icon);
+	const [selectedIcon, selectIcon] = React.useState(children[0].props['data-icon']);
 	const handleIconClick = e => {
 		e.preventDefault();
 		e.target.blur();
@@ -32,28 +32,32 @@ const IconTabs = ({contentBgColor='gray-300', innerClassNames='', children, ...m
 		}
 	});
 	
-	const selectedChild = children.find( child => child.props.icon === selectedIcon );
+	const selectedChild = children.find( child => child.props['data-icon'] === selectedIcon );
 	const selectedChildHasDesc = !!selectedChild?.props.dangerouslySetInnerHTML.__html;
 	
 	
 	return (
 		<div {...moreProps}>
 			<ul className={innerClassNames}>
-				{children.map( ({props: {icon}}) => (
+				{children.map( ({props: {'data-icon': icon}}) => (
 					<li key={icon} className='relative inline-block'>
-						<IconLink icon={icon} href={selectedChildHasDesc && icon} iconSize={iconSize}
+						<IconLink icon={icon} href={selectedChildHasDesc ? icon : undefined} iconSize={iconSize}
 							isSelected={selectedChildHasDesc && icon === selectedIcon}
 							className={selectedChildHasDesc && '-mb-2'}
 							onClick={handleIconClick}
+							onMouseDown={e=>e.preventDefault()} // Prevent flash of focus ring
 							title={icon}
 						/>
 						
 						{/* Triangle pointing to slected tab's icon */}
 						{ selectedChildHasDesc && icon === selectedIcon &&
 							<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-								width="1rem" height=".625rem" viewdBox="0 0 16 10"
 								className={`text-${contentBgColor} fill-current`}
-								style={{marginLeft: `calc( (${iconSize} / 2) - .5rem)`}} // Aim at the icon's center
+								style={{
+									width: '1rem',
+									height: '.625rem',
+									marginLeft: `calc( (${iconSize} / 2) - .5rem)`, // Aim at the icon's center
+								}}
 							> <path d="M 0 10 L 8 0 L 16 10 z"/> </svg>
 						}
 					</li>

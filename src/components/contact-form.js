@@ -89,11 +89,11 @@ const ContactForm = ({heading, email})=>{
 					<CopyToClipboard text={email} onCopy={handleEmailCopied}>
 						<span className="relative">
 							<button type="button" title="Copy to clipboard" className="inline-block mx-1 p-1 outline-none relative" style={{top:'.1rem'}} onClick={e=>e.preventDefault()}>
-								<svg className="fill-current" xmlns="http://www.w3.org/2000/svg" height="1.25rem" viewBox="0 0 32 32">
+								<svg className="fill-current h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 									<path d="M20 8v-8h-14l-6 6v18h12v8h20v-24h-12zM6 2.828v3.172h-3.172l3.172-3.172zM2 22v-14h6v-6h10v6l-6 6v8h-10zM18 10.828v3.172h-3.172l3.172-3.172zM30 30h-16v-14h6v-6h10v20z"></path>
 								</svg>
 							</button>
-							<div ref={emailCopiedMsgRef} className="hidden">Copied!</div>
+							<span ref={emailCopiedMsgRef} className="hidden">Copied!</span>
 						</span>
 					</CopyToClipboard>
 				</div>
@@ -101,7 +101,7 @@ const ContactForm = ({heading, email})=>{
 			
 			{/* Name */}
 			<label className="sm:flex mb-6">
-				<div className={labelClass}> Your Name </div>
+				<span className={labelClass}> Your Name </span>
 				<input type="text" id="contact-name" name="name" placeholder="Who are you?"
 					ref={register({ required: true })}
 					className={`form-input ${textInputClass} ${errors.name ? 'shadow-error text-red-700' : ''}`}
@@ -110,7 +110,7 @@ const ContactForm = ({heading, email})=>{
 			
 			{/* Email */}
 			<label className="sm:flex mb-6">
-				<div className={labelClass}> Your Email </div>
+				<span className={labelClass}> Your Email </span>
 				<input type="text" name="email" placeholder="new-boss@awesome.company"
 					ref={register({ required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
 					className={`form-input ${textInputClass} ${errors.email ? 'shadow-error text-red-700' : ''}`}
@@ -118,12 +118,12 @@ const ContactForm = ({heading, email})=>{
 			</label>
 			
 			{/* Subject radio options */}
-			{/* Fieldset breaks flexbox, chrome issue #375693, inner div */}
+			{/* Fieldset breaks flexbox, chrome issue #375693, inner div required */}
 			<fieldset><div className="sm:flex mb-2">
-				{/* Legend breaks flexbox (FF and Chrome), wrap in div */}
-				<div className={labelClass}> <legend className="block p-0 pointer-events-none">
+				{/* Legend breaks flexbox (FF and Chrome), cannot validly be wrapped in div */}
+				<div className={`pointer-events-none ${labelClass}`}>
 					What&apos;s up?
-				</legend> </div>
+				</div>
 				<div className={`${scope.radioContainer} w-full sm:w-2/3 flex flex-wrap`}
 					onChange={ e=>setShowSubject(e.target.value === 'Custom Subject') }
 				>
@@ -136,7 +136,7 @@ const ContactForm = ({heading, email})=>{
 			
 			{/* Subject input, only show when last radio above is selected */}
 			<label className={`${showSubject ? 'sm:flex' : 'hidden'} mb-6`}>
-				<div className={labelClass}> How can I help? </div>
+				<span className={labelClass}> How can I help? </span>
 				<input type="text" name="custom_subject" placeholder="About that thing..." ref={register()}
 					className={`form-input ${textInputClass}`}
 				/>
@@ -144,7 +144,7 @@ const ContactForm = ({heading, email})=>{
 			
 			{/* Message body */}
 			<label className="sm:flex mb-6">
-				<div className={labelClass}> Your Message </div>
+				<span className={labelClass}> Your Message </span>
 				<textarea name="body" ref={register({ required: true })}
 					className={`h-48 form-textarea ${textInputClass}
 						${errors.body ? 'shadow-error' : ''}
@@ -193,7 +193,7 @@ const RadioCard = React.forwardRef( ({children, ...moreProps}, ref) => (
 		<label className="cursor-pointer">
 			<input type="radio" ref={ref} name="subject" {...moreProps} className="appearance-none absolute shadow-never"/>
 
-			<div className={`${scope.radioCard} h-full   py-2 px-4   flex
+			<span className={`${scope.radioCard} h-full   py-2 px-4   flex
 				rounded bg-gray-200 border-2 border-gray-200
 				text-gray-700 leading-tight
 			`}>
@@ -215,10 +215,12 @@ const RadioCard = React.forwardRef( ({children, ...moreProps}, ref) => (
 				</svg>
 				
 				{children}
-			</div>
+			</span>
 		</label>
 	</div>
 ) );
+
+RadioCard.displayName = 'RadioCard';
 
 RadioCard.propTypes = {
 	children: PropTypes.node,

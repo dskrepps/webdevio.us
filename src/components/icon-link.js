@@ -47,7 +47,7 @@ const IconLink = ({ icon, children, isSelected=false, iconSize=defaultIconSize, 
 };
 
 IconLink.propTypes = {
-	icon: PropTypes.string.required,
+	icon: PropTypes.string.isRequired,
 	children: PropTypes.node,
 	isSelected: PropTypes.bool,
 	iconSize: PropTypes.string,

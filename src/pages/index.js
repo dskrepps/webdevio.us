@@ -29,7 +29,7 @@ const handleHireMeClick = ()=>{
 const IndexPage = ({data})=>( <Layout>
 	<SEO keywords={[`webdev`, `web developer`, `web developer york pa`, `dylan krepps`, `dskrepps`]}/>
 
-	<OuterWrapper shorterThanFold="true" shortestFold="22rem" tallestFold="35rem" className="pt-4">
+	<OuterWrapper shorterThanFold={true} shortestFold="22rem" tallestFold="35rem" className="pt-4">
 		<InnerWrapper className="flex items-center justify-center h-full">
 			<HelloCard name="Dylan Krepps"
 				gravatarId="68aaa8699044f6337699edcf6e6c246c"
@@ -156,7 +156,7 @@ const IndexPage = ({data})=>( <Layout>
 </Layout> );
 
 IndexPage.propTypes = {
-	data: PropTypes.obj,
+	data: PropTypes.object,
 };
 
 export default IndexPage;

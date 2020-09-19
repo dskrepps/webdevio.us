@@ -58,7 +58,7 @@ const PortfolioEntry = ({entry: {html, frontmatter: {title, subheading, screensh
 				innerClassNames="px-4 rounded-b-lg" contentBgColor="gray-300"
 			>
 				{techs.map( ({tech, desc}) => (
-					<div icon={tech} key={tech}
+					<div data-icon={tech} key={tech}
 						dangerouslySetInnerHTML={{__html: desc}}
 					></div>
 				))}
@@ -69,7 +69,7 @@ const PortfolioEntry = ({entry: {html, frontmatter: {title, subheading, screensh
 );
 
 PortfolioEntry.propTypes = {
-	'entry': PropTypes.string.isRequired,
+	entry: PropTypes.object.isRequired,
 };
 
 export default PortfolioEntry;
