@@ -5,7 +5,7 @@ const fullConfig = resolveConfig(tailwindConfig);
 
 module.exports = {
   siteMetadata: {
-    title: 'Dylan Krepps | Web Developer in York, PA',
+    title: 'Dylan Krepps | Web Developer',
     description: 'Portfolio of Dylan Krepps, Web Developer in York, PA',
     author: '@DSKrepps',
   },
