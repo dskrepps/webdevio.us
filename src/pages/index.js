@@ -142,7 +142,7 @@ const IndexPage = ({data})=>( <Layout>
 	<a id="contact"></a>
 	
 	{/* Divider graphic */}
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1440 70" aria-hidden="true">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1440 70" aria-hidden="true" width="100%">
 		<path className="text-gray-800 fill-current" d="M0,64L480,129L960,64L1440,96L1440,135L960,135L480,135L0,135Z"></path>
 	</svg>
 	

@@ -39,8 +39,8 @@ const IconLink = ({ icon, children, isSelected=false, iconSize=defaultIconSize, 
 			`}
 		>
 			{/* Spacing between icon and text, but not when text is empty */}
-			{children && <div className="pl-3">
-				{children}
+			{<div className={`pl-3 ${children ? '' : 'sr-only'}`}>
+				{children || icon}
 			</div>}
 		</a>
 	);

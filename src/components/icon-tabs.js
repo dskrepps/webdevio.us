@@ -51,7 +51,7 @@ const IconTabs = ({contentBgColor='gray-300', innerClassNames='', children, ...m
 						
 						{/* Triangle pointing to slected tab's icon */}
 						{ selectedChildHasDesc && icon === selectedIcon &&
-							<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+							<svg width="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
 								className={`text-${contentBgColor} fill-current`}
 								style={{
 									width: '1rem',

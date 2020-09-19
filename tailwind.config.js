@@ -44,6 +44,7 @@ module.exports = {
         '1/3': '33.3333%',
       },
       boxShadow: theme => ({
+        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
         'lg': '0 2px 6px 0 hsla(0, 0%, 0%, .2)',
         'inner': 'inset 0 0 4px 0 rgba(0, 0, 0, 0.09)',
         'focus': `0 0 0 4px ${theme('colors.blue.400')}`,

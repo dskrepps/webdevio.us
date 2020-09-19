@@ -34,7 +34,7 @@ const CategoryTree = ({children}) => {
 	const skillLists = categories.map( ({props: {children, ...moreProps}}, i) => {
 		const ref = React.useRef(null);
 		pairedNodes[i].to = ref.current;
-		return <div key={i} ref={ref} className="mx-auto"> {children} </div>;
+		return <div key={i} ref={ref} className="mx-auto" aria-hidden="true"> {children} </div>;
 	} );
 	
 	const entries = children.filter( child => child.type?.displayName !== 'Category' )
@@ -96,7 +96,7 @@ const CategoryTree = ({children}) => {
 			</div>
 			
 			{/* For drawing connections */}
-			{<canvas ref={canvasRef} className="hidden sm:block absolute top-0 left-0 z-behind h-full w-full"></canvas>}
+			{<canvas ref={canvasRef} className="hidden sm:block absolute top-0 left-0 z-behind h-full w-full" aria-hidden="true"></canvas>}
 		</div>
 	);
 };

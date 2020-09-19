@@ -27,9 +27,10 @@ const Layout = ({topButton=true, children}) => (
 					hover:animate-bounce
 				`}
 			>
-				<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" className="h-6 fill-current">
+				<svg viewBox="0 0 448 512" width="24" xmlns="http://www.w3.org/2000/svg" className="h-6 fill-current">
 					<path d="M240.9 130.5l194.3 194.3c9.3 9.3 9.3 24.5 0 33.9l-22.6 22.6c-9.3 9.3-24.5 9.3-33.9 .04L224 227.5 69.2 381.5c-9.3 9.3-24.5 9.3-33.9-.04l-22.6-22.6c-9.3-9.3-9.3-24.5 0-33.9L207.03 130.5c9.3-9.3 24.5-9.3 33.9-.1z"/>
 				</svg>
+				<span className="sr-only">Top</span>
 			</AnchorLink>}
 		</OuterWrapper>
 	</div>

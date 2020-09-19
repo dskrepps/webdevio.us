@@ -89,9 +89,10 @@ const ContactForm = ({heading, email})=>{
 					<CopyToClipboard text={email} onCopy={handleEmailCopied}>
 						<span className="relative">
 							<button type="button" title="Copy to clipboard" className="inline-block mx-1 p-1 outline-none relative" style={{top:'.1rem'}} onClick={e=>e.preventDefault()}>
-								<svg className="fill-current h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+								<svg className="fill-current h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" aria-hidden="true">
 									<path d="M20 8v-8h-14l-6 6v18h12v8h20v-24h-12zM6 2.828v3.172h-3.172l3.172-3.172zM2 22v-14h6v-6h10v6l-6 6v8h-10zM18 10.828v3.172h-3.172l3.172-3.172zM30 30h-16v-14h6v-6h10v20z"></path>
 								</svg>
+								<span className="sr-only">Copy</span>
 							</button>
 							<span ref={emailCopiedMsgRef} className="hidden">Copied!</span>
 						</span>
@@ -119,20 +120,23 @@ const ContactForm = ({heading, email})=>{
 			
 			{/* Subject radio options */}
 			{/* Fieldset breaks flexbox, chrome issue #375693, inner div required */}
-			<fieldset><div className="sm:flex mb-2">
-				{/* Legend breaks flexbox (FF and Chrome), cannot validly be wrapped in div */}
-				<div className={`pointer-events-none ${labelClass}`}>
-					What&apos;s up?
+			<fieldset>
+				<legend className="sr-only">What&apos;s up?</legend>
+				<div className="sm:flex mb-2">
+					{/* Legend breaks flexbox (FF and Chrome), cannot validly be wrapped in div, move real one above */}
+					<div className={`pointer-events-none ${labelClass}`} aria-hidden="true">
+						What&apos;s up?
+					</div>
+					<div className={`${scope.radioContainer} w-full sm:w-2/3 flex flex-wrap`}
+						onChange={ e=>setShowSubject(e.target.value === 'Custom Subject') }
+					>
+						<RadioCard ref={register()} value='Job' defaultChecked> Job Opportunity </RadioCard>
+						<RadioCard ref={register()} value='Help'> My Site Needs Help </RadioCard>
+						<RadioCard ref={register()} value='You&apos;re Awesome'> Just letting you know you&apos;re awesome </RadioCard>
+						<RadioCard ref={register()} value='Custom Subject'> Another subject... </RadioCard>
+					</div>
 				</div>
-				<div className={`${scope.radioContainer} w-full sm:w-2/3 flex flex-wrap`}
-					onChange={ e=>setShowSubject(e.target.value === 'Custom Subject') }
-				>
-					<RadioCard ref={register()} value='Job' defaultChecked> Job Opportunity </RadioCard>
-					<RadioCard ref={register()} value='Help'> My Site Needs Help </RadioCard>
-					<RadioCard ref={register()} value='You&apos;re Awesome'> Just letting you know you&apos;re awesome </RadioCard>
-					<RadioCard ref={register()} value='Custom Subject'> Another subject... </RadioCard>
-				</div>
-			</div></fieldset>
+			</fieldset>
 			
 			{/* Subject input, only show when last radio above is selected */}
 			<label className={`${showSubject ? 'sm:flex' : 'hidden'} mb-6`}>
@@ -199,14 +203,14 @@ const RadioCard = React.forwardRef( ({children, ...moreProps}, ref) => (
 			`}>
 				
 				{/* Unchecked radio icon */}
-				<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"
+				<svg viewBox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
 					className={`${scope.iconUnchecked} flex-shrink-0   h-6 mr-2   opacity-50 stroke-2 stroke-current`}
 				>
 					<circle cx="10" cy="10.5435" r="9" fill="none"/>
 				</svg>
 				
 				{/* Checked radio icon */}
-				<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"
+				<svg viewBox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
 					className={`${scope.iconChecked} flex-shrink-0   h-6 mr-2   text-green-700 fill-current stroke-current stroke-2`}
 				>
 					<path strokeWidth="0" d="M16.0576 2.58634C14.3765 1.30459 12.2772 0.543457 10 0.543457C4.47715 0.543457 0 5.02061 0 10.5435C0 16.0663 4.47715 20.5435 10 20.5435C15.5228 20.5435 20 16.0663 20 10.5435C20 9.91753 19.9425 9.30504 19.8325 8.71098L18 10.5435C18 14.9617 14.4183 18.5435 10 18.5435C5.58172 18.5435 2 14.9617 2 10.5435C2 6.12518 5.58172 2.54346 10 2.54346C11.7242 2.54346 13.321 3.08892 14.6273 4.01669L16.0576 2.58634Z"/>
@@ -229,7 +233,7 @@ RadioCard.propTypes = {
 
 
 const LoadingAnimation = () => (
-	<svg width="24px" height="30px" viewBox="0 0 24 30" xmlns="http://www.w3.org/2000/svg"
+	<svg width="24" viewBox="0 0 24 30" xmlns="http://www.w3.org/2000/svg"
 		className="fill-current text-gray-100"
 	>
 		<rect x="0" y="13" width="4" height="5">
