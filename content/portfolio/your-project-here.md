@@ -1,6 +1,6 @@
 ---
 title: "The Next Big Thing"
-date: "2099"
+date: "0"
 subheading: "​Your Project Here"
 screenshot: "coding"
 categories:
@@ -13,7 +13,7 @@ buttons:
   -
     text: "Contact Me »"
     link: "#contact"
-    color: "blue"
+    color: "teal"
 techs:
   - tech: "HTML5"
   - tech: "JavaScript"

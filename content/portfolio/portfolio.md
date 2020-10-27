@@ -10,7 +10,7 @@ buttons:
   -
     text: "View Live »"
     link: "https://webdevio.us"
-    color: "green"
+    color: "blue"
   -
     text: "Source »"
     link: "https://github.com/dskrepps/webdevio.us"
@@ -24,9 +24,9 @@ techs:
     desc: "<strong>React</strong> makes building interactive and component-based user interfaces easy."
   -
     tech: "tailwindcss"
-    desc: "<strong>TailwindCSS</strong> allowed rapidly developing component styles for a smooth workflow building the UI."
+    desc: "<strong>TailwindCSS</strong> allows rapidly building component UIs in a smooth workflow."
   -
     tech: "netlify"
-    desc: "<strong>Netlify</strong> is the perfect platform for automatically deploying the static site within a git workflow."
+    desc: "<strong>Netlify</strong> is perfect for instantly deploying a static site within a git workflow."
 ---
 I needed to portray my online presence in a professional manner that let viewers see immediately what I can do. After coming up with the design I used the modern tools at my disposal to create a fast, extensible site ready to grow into more if needed.

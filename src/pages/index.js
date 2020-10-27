@@ -119,7 +119,7 @@ const IndexPage = ({data})=>( <Layout>
 			</Category>
 			
 			
-			<h2 className='w-full mb-6 text-2xl font-bold text-center text-gray-800 tracking-wide'>
+			<h2 className='w-full mb-8 text-2xl font-bold text-center text-gray-800 tracking-wide'>
 				Projects I&apos;ve Worked On
 			</h2>
 			
@@ -162,7 +162,7 @@ IndexPage.propTypes = {
 export default IndexPage;
 
 export const pageQuery = graphql`
-	query { allMarkdownRemark(sort: { fields: [frontmatter___date], order: ASC }) {
+	query { allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
 		edges { node {
 			html
 			frontmatter {
