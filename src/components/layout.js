@@ -18,7 +18,7 @@ const Layout = ({topButton=true, children}) => (
 			{children}
 		</main>
 		
-		<OuterWrapper className="bg-gray-800" Tag="footer">
+		<OuterWrapper className="bg-gray-900" Tag="footer">
 			{/* <InnerWrapper>
 			</InnerWrapper> */}
 			{topButton && <AnchorLink to="#top" title="Return to Top"

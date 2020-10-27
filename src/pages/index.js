@@ -78,8 +78,8 @@ const IndexPage = ({data})=>( <Layout>
 				{ x: '85%', y: '5.2rem', scale: '4rem',   url: './tech-frontend-bootstrap.svg' },
 			]}>
 				<ul>
-					<li>Vue.js</li>
 					<li>React</li>
+					<li>Vue.js</li>
 					<li>Bootstrap</li>
 					<li>Tailwind</li>
 				</ul>
@@ -146,7 +146,7 @@ const IndexPage = ({data})=>( <Layout>
 		<path className="text-gray-800 fill-current" d="M0,64L480,129L960,64L1440,96L1440,135L960,135L480,135L0,135Z"></path>
 	</svg>
 	
-	<OuterWrapper className="bg-gray-800 text-white pt-32 -mb-12">
+	<OuterWrapper className="bg-gray-800 text-white pt-32 -mb-12 bg-gradient-to-b from-gray-800 to-gray-900">
 		<InnerWrapper>
 			<ContactForm heading={ <h2 className="text-4xl">Contact Me</h2> } email="dskrepps@gmail.com"/>
 		</InnerWrapper>
